@@ -88,6 +88,17 @@ const userSchema = new mongoose.Schema(
     default: "user",
     },
     avatar: String,
+
+    /*===================
+    NEW USER PREFERENCES
+    ===================*/
+    preferences: {
+        categories: [
+            {
+                type: String,
+            },
+        ],
+    },
 },
 { timestamps: true }
 );
@@ -96,15 +107,15 @@ const userSchema = new mongoose.Schema(
 Password Hashing
 ========================= */
 userSchema.pre("save", async function () {
-  if (!this.isModified("password")) return;
-  this.password = await bcrypt.hash(this.password, 10);
+    if (!this.isModified("password")) return;
+    this.password = await bcrypt.hash(this.password, 10);
 });
 
 /* =========================
 Password Comparison
 ========================= */
 userSchema.methods.comparePassword = function (password) {
-  return bcrypt.compare(password, this.password);
+    return bcrypt.compare(password, this.password);
 };
 
 export default mongoose.model("User", userSchema);

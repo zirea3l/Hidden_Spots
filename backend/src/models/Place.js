@@ -61,6 +61,21 @@ const placeSchema = new mongoose.Schema(
       composite: { type: Number, default: 0 }
     },
 
+    likesCount: {
+      type: Number,
+      default: 0
+    },
+
+    commentsCount: {
+      type: Number,
+      default: 0
+    },
+
+    trendingScore: {
+      type: Number,
+      default: 0
+    },
+
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
