@@ -19,10 +19,23 @@ const app = express();
 
 const { protect } = require("./middleware/auth.middleware");
 
+
+/* =========================
+Cors
+========================= */
+app.use(
+    cors({
+        origin: [
+        "http://localhost:5173",
+        "https://hidden-spots-alpha.vercel.app/",
+        ],
+    credentials: true,
+    })
+);
+
 /* =========================
 Global Middlewares
 ========================= */
-app.use(cors());
 app.use(express.json());
 app.use("/api/auth", require("./routes/auth.routes"));
 app.use("/api/places", require("./routes/place.routes"));
