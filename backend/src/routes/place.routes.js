@@ -58,7 +58,6 @@ import {
     getPlaceById,
     updatePlace,
     deletePlace,
-    getTrendingPlaces,
     getPersonalizedFeed
 } from "../controllers/place.controller.js";
 
